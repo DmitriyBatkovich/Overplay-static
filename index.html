@@ -36,20 +36,8 @@
                 .then(data => {
                     const contentDiv = document.querySelector('.content');
                     const title = document.createElement('h1');
-                    title.textContent = data.title;
+                    title.textContent = data.id;
                     contentDiv.appendChild(title);
-
-                    const description = document.createElement('p');
-                    description.textContent = data.description;
-                    contentDiv.appendChild(description);
-
-                    const itemsList = document.createElement('ul');
-                    data.items.forEach(item => {
-                        const listItem = document.createElement('li');
-                        listItem.textContent = item;
-                        itemsList.appendChild(listItem);
-                    });
-                    contentDiv.appendChild(itemsList);
                 })
                 .catch(error => {
                     console.error('Error loading JSON:', error);

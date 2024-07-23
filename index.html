@@ -4,49 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JSON Data Display</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        .content {
-            margin-top: 20px;
-        }
-        .content h1 {
-            font-size: 24px;
-        }
-        .content p {
-            font-size: 18px;
-        }
-    </style>
 </head>
 <body>
-
-    <h1>JSON Data from static.json</h1>
-    <div class="content">
-        <!-- Content will be loaded here dynamically -->
-    </div>
+    <pre id="json-content">
+        <!-- JSON content will be loaded here -->
+    </pre>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             fetch('static.json')
                 .then(response => response.json())
                 .then(data => {
-                    const contentDiv = document.querySelector('.content');
-                    
-                    const title = document.createElement('h1');
-                    title.textContent = "File Information";
-                    contentDiv.appendChild(title);
-
-                    const fileID = document.createElement('p');
-                    fileID.textContent = `File ID: ${data.fileID}`;
-                    contentDiv.appendChild(fileID);
+                    const jsonContent = document.getElementById('json-content');
+                    jsonContent.textContent = JSON.stringify(data, null, 2);
                 })
                 .catch(error => {
                     console.error('Error loading JSON:', error);
                 });
         });
     </script>
-
 </body>
 </html>

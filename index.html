@@ -36,7 +36,7 @@
                 .then(data => {
                     const contentDiv = document.querySelector('.content');
                     const title = document.createElement('h1');
-                    title.textContent = data.id;
+                    title.textContent = data.fileID;
                     contentDiv.appendChild(title);
                 })
                 .catch(error => {
